@@ -1,0 +1,10 @@
+{
+  "name": "File Share Server",
+  "postCreateCommand": "pip install flask qrcode[pil]",
+  "waitFor": "postCreateCommand",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["app.py"]
+    }
+  }
+}
