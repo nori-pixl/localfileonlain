@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ファイル共有中</title>
+</head>
+<body>
+    <h1>接続先: https://{{ ip }}:{{ port }}</h1>
+    <p>以下のファイルを共有しています：</p>
+    <ul>
+        {% for file in files %}
+        <li><a href="/download/{{ file }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+    <a href="/">設定に戻る</a>
+</body>
+</html>
