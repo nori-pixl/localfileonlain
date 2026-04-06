@@ -2,26 +2,39 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>ファイル共有サイト</title>
+    <title>接続設定</title>
     <style>
         body { font-family: sans-serif; text-align: center; padding: 50px; }
-        .btn { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
-        .file-list { margin-top: 30px; text-align: left; display: inline-block; }
+        input { padding: 10px; margin: 10px; width: 200px; }
+        .btn { padding: 10px 20px; background: #28a745; color: white; border: none; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h1>ランダムポート共有サーバー</h1>
-    
-    <!-- 「作成（再読み込み）」ボタン -->
-    <button class="btn" onclick="location.reload()">新しい接続を生成</button>
+    <h1>共有サーバー設定</h1>
+    <input type="text" id="ip" placeholder="IPアドレス (例: 192.162.0.1)">
+    <input type="text" id="port" placeholder="ポート (例: 8080)">
+    <br>
+    <button class="btn" onclick="connect()">作成して接続</button>
 
-    <div class="file-list">
-        <h3>共有中のファイル一覧:</h3>
-        <ul>
-            {% for file in files %}
-            <li><a href="/download/{{ file }}">{{ file }}</a></li>
-            {% endfor %}
-        </ul>
-    </div>
+    <script>
+        // 保存されたIPを読み込む
+        window.onload = function() {
+            if(localStorage.getItem('saved_ip')) {
+                document.getElementById('ip').value = localStorage.getItem('saved_ip');
+            }
+        }
+
+        function connect() {
+            const ip = document.getElementById('ip').value;
+            const port = document.getElementById('port').value;
+            
+            // IPをブラウザに保存
+            localStorage.setItem('saved_ip', ip);
+
+            // 指定されたURLへジャンプ
+            // 実際には https://IP:PORT/share という形になります
+            location.href = `/share?ip=${ip}&port=${port}`;
+        }
+    </script>
 </body>
 </html>
