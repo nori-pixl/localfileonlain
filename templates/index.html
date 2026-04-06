@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ファイル共有サイト</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; padding: 50px; }
+        .btn { padding: 15px 30px; font-size: 1.2rem; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+        .file-list { margin-top: 30px; text-align: left; display: inline-block; }
+    </style>
+</head>
+<body>
+    <h1>ランダムポート共有サーバー</h1>
+    
+    <!-- 「作成（再読み込み）」ボタン -->
+    <button class="btn" onclick="location.reload()">新しい接続を生成</button>
+
+    <div class="file-list">
+        <h3>共有中のファイル一覧:</h3>
+        <ul>
+            {% for file in files %}
+            <li><a href="/download/{{ file }}">{{ file }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
