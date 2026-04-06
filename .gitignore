@@ -1,0 +1,16 @@
+# Pythonの一時キャッシュ（実行すると自動で作成されるもの）
+__pycache__/
+*.py[cod]
+*$py.class
+
+# 仮想環境（venvなどを作成した場合）
+venv/
+env/
+.env
+
+# OSが作成する一時ファイル
+.DS_Store
+Thumbs.db
+
+# ログファイル
+*.log
